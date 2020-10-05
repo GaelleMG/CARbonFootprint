@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G2016" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CARbonFootprint" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,143 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <pickerView hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zXa-jc-ul9">
+                                <rect key="frame" x="97" y="113" width="181" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="o6V-xE-54E"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="qc6-ID-ORt"/>
+                                </connections>
+                            </pickerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hm0-pn-rxb">
+                                <rect key="frame" x="41" y="70.5" width="293" height="29"/>
+                                <segments>
+                                    <segment title="Gasoline"/>
+                                    <segment title="Electric"/>
+                                </segments>
+                                <color key="tintColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="vehicleTypeIndex:" destination="BYZ-38-t0r" eventType="valueChanged" id="OLo-xc-CzH"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Set your car's MPG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOC-PY-RV2">
+                                <rect key="frame" x="96" y="220" width="183" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="w8U-yS-ykD">
+                                <rect key="frame" x="48" y="192" width="249" height="31"/>
+                                <color key="tintColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="mpgValue:" destination="BYZ-38-t0r" eventType="valueChanged" id="rWn-vJ-6Co"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="50 MPG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qy9-tv-wnk">
+                                <rect key="frame" x="141" y="158.5" width="93" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Select Vehicle Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGb-we-uez">
+                                <rect key="frame" x="95" y="46" width="184" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Select your State" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQ3-62-1jU">
+                                <rect key="frame" x="116" y="113.5" width="143" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBd-wE-zyx">
+                                <rect key="frame" x="134" y="354" width="107" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.99850887060165405" green="0.12850204110145569" blue="0.005211477167904377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDk-0f-WqE">
+                                <rect key="frame" x="134" y="354" width="107" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="CARbon Footprint:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Is2-YF-vLl">
+                                <rect key="frame" x="74" y="318.5" width="232" height="35"/>
+                                <fontDescription key="fontDescription" name="GurmukhiMN" family="Gurmukhi MN" pointSize="25"/>
+                                <color key="textColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Kg of CO2 Emitted per Year" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fq4-EZ-xyp">
+                                <rect key="frame" x="73" y="393.5" width="229" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.99850887060165405" green="0.12850204110145569" blue="0.005211477167904377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="rplot___energy_generation_by_state_dualyaxis_grams_co2_per_kwh" translatesAutoresizingMaskIntoConstraints="NO" id="PsN-Xf-HtZ">
+                                <rect key="frame" x="9" y="427" width="357" height="232"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fq4-EZ-xyp" secondAttribute="trailing" constant="57" id="43C-A2-9Q3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="w8U-yS-ykD" secondAttribute="trailing" constant="30" id="8jv-AQ-81w"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qy9-tv-wnk" secondAttribute="trailing" constant="125" id="Cru-qa-8CJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Is2-YF-vLl" secondAttribute="trailing" constant="53" id="D98-jm-JOr"/>
+                            <constraint firstItem="w8U-yS-ykD" firstAttribute="top" secondItem="Qy9-tv-wnk" secondAttribute="bottom" constant="3.5" id="Ezf-am-HDB"/>
+                            <constraint firstItem="wQ3-62-1jU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="100" id="F3R-CB-tHP"/>
+                            <constraint firstItem="Qy9-tv-wnk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="125" id="KLq-XW-yJe"/>
+                            <constraint firstItem="hm0-pn-rxb" firstAttribute="top" secondItem="OGb-we-uez" secondAttribute="bottom" constant="10" id="Myd-Dd-T4v"/>
+                            <constraint firstItem="Is2-YF-vLl" firstAttribute="top" secondItem="hm0-pn-rxb" secondAttribute="bottom" constant="220" id="OSQ-cw-Ep6"/>
+                            <constraint firstItem="sOC-PY-RV2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="80" id="OtL-id-oYe"/>
+                            <constraint firstItem="hm0-pn-rxb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="25" id="TMg-LK-bJ4"/>
+                            <constraint firstItem="aDk-0f-WqE" firstAttribute="top" secondItem="Is2-YF-vLl" secondAttribute="bottom" constant="1" id="UuY-aC-eID"/>
+                            <constraint firstItem="OGb-we-uez" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="79" id="Vrj-rv-D2z"/>
+                            <constraint firstItem="w8U-yS-ykD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="Y6V-5f-zn9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wQ3-62-1jU" secondAttribute="trailing" constant="100" id="YUa-UK-gkS"/>
+                            <constraint firstItem="zXa-jc-ul9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="81" id="aGZ-ww-0Ay"/>
+                            <constraint firstItem="sOC-PY-RV2" firstAttribute="top" secondItem="w8U-yS-ykD" secondAttribute="bottom" constant="4" id="acQ-OA-lb5"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PsN-Xf-HtZ" secondAttribute="bottom" constant="8" id="cEv-B9-Lfq"/>
+                            <constraint firstItem="QBd-wE-zyx" firstAttribute="top" secondItem="aDk-0f-WqE" secondAttribute="bottom" id="f57-iS-QCc"/>
+                            <constraint firstItem="Fq4-EZ-xyp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="57" id="fJj-ar-HCJ"/>
+                            <constraint firstItem="OGb-we-uez" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="26" id="fwt-bM-W7Z"/>
+                            <constraint firstItem="PsN-Xf-HtZ" firstAttribute="top" secondItem="Fq4-EZ-xyp" secondAttribute="bottom" constant="25" id="hBG-jK-daM"/>
+                            <constraint firstItem="Fq4-EZ-xyp" firstAttribute="top" secondItem="Is2-YF-vLl" secondAttribute="bottom" constant="40" id="lqo-g1-mpB"/>
+                            <constraint firstItem="PsN-Xf-HtZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="9" id="ooI-bw-Niz"/>
+                            <constraint firstItem="Is2-YF-vLl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="58" id="pcu-nD-YrX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sOC-PY-RV2" secondAttribute="trailing" constant="80" id="pg8-eB-8eW"/>
+                            <constraint firstAttribute="trailing" secondItem="PsN-Xf-HtZ" secondAttribute="trailing" constant="9" id="q4j-Pm-L64"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hm0-pn-rxb" secondAttribute="trailing" constant="25" id="ryI-mc-bGp"/>
+                            <constraint firstItem="aDk-0f-WqE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="118" id="s1s-EM-ABO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aDk-0f-WqE" secondAttribute="trailing" constant="118" id="tec-sX-2AS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QBd-wE-zyx" secondAttribute="trailing" constant="118" id="uRZ-N6-f4z"/>
+                            <constraint firstItem="zXa-jc-ul9" firstAttribute="top" secondItem="hm0-pn-rxb" secondAttribute="bottom" constant="15" id="uf6-eW-Zw1"/>
+                            <constraint firstItem="Qy9-tv-wnk" firstAttribute="top" secondItem="hm0-pn-rxb" secondAttribute="bottom" constant="60" id="vf4-3o-TLG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OGb-we-uez" secondAttribute="trailing" constant="80" id="vkj-LZ-kk0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zXa-jc-ul9" secondAttribute="trailing" constant="81" id="ydf-28-1vD"/>
+                            <constraint firstItem="wQ3-62-1jU" firstAttribute="top" secondItem="hm0-pn-rxb" secondAttribute="bottom" constant="15" id="zF4-g2-J7N"/>
+                            <constraint firstItem="QBd-wE-zyx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="118" id="zgD-9V-Eyo"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="carbonFootprint" destination="QBd-wE-zyx" id="fff-Et-BTa"/>
+                        <outlet property="carbonFootprintE" destination="aDk-0f-WqE" id="enX-O3-pos"/>
+                        <outlet property="carbonplot" destination="PsN-Xf-HtZ" id="kSg-bq-XjX"/>
+                        <outlet property="label" destination="sOC-PY-RV2" id="Xjb-Yy-owo"/>
+                        <outlet property="mpgSliderLabel" destination="Qy9-tv-wnk" id="5qj-N9-py7"/>
+                        <outlet property="selectStateLabel" destination="wQ3-62-1jU" id="cmG-2X-PDd"/>
+                        <outlet property="statePicker" destination="zXa-jc-ul9" id="AD1-XT-o1X"/>
+                        <outlet property="vehicleMPG" destination="w8U-yS-ykD" id="AXm-PC-nsS"/>
+                        <outlet property="vehicleType" destination="hm0-pn-rxb" id="nZH-ya-bTf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-79.200000000000003" y="137.18140929535232"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="rplot___energy_generation_by_state_dualyaxis_grams_co2_per_kwh" width="3375" height="2117"/>
+    </resources>
 </document>
